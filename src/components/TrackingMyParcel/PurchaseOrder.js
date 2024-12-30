@@ -7,13 +7,16 @@ import {
   Platform,
   TextInput,
   ScrollView,
+  Linking,
+  TouchableOpacity,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {getTrackingMyParcelListData} from '../../api/TrackingMyParcel/trackingMyParcel';
+import {getPurchaseOrderData} from '../../api/PurchaseOrder/purchaseOrder';
 import Loader from '../Loader/loader';
 import debounce from 'lodash.debounce';
+import {BASE_URL} from '../../api/api';
 
-const TrackingMyParcel = ({navigation}) => {
+const PurchaseOrder = ({navigation}) => {
   const [trackList, setTrackList] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -40,7 +43,7 @@ const TrackingMyParcel = ({navigation}) => {
     setLoading(true);
 
     try {
-      const data = await getTrackingMyParcelListData(query, pageNum);
+      const data = await getPurchaseOrderData(query, pageNum);
       if (data?.results?.data.length === 0) {
         setHasMore(false);
       } else {
@@ -113,31 +116,26 @@ const TrackingMyParcel = ({navigation}) => {
             <Loader />
           ) : trackList.length > 0 ? (
             trackList.map((item, index) => (
-              <View style={styles.cardContainer} key={index}>
-                <View style={styles.cardWrap}>
-                  <View style={styles.card}>
-                    <View style={styles.cardContent}>
-                      <Text style={styles.textStyle}>
-                        Invoice : {item?.invoice_number}
-                      </Text>
-                      <Text style={styles.textStyle}>
-                        Phone Number : {item?.phone_number}
-                      </Text>
-                      <Text style={styles.textStyle}>
-                        Delivery Status : {item?.delivery_conformations}
-                      </Text>
-                      <Text style={styles.trackingAddress}>
-                        Address : {item?.user_address}
-                      </Text>
-                    </View>
-                  </View>
+              <View style={styles.card} key={index}>
+                <View style={styles.cardInvoice}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      Linking.openURL(`${BASE_URL}/invoices/list/${item.slug}`);
+                    }}>
+                    <Text style={styles.fileIcon}>
+                      <FontAwesome name="file-pdf-o" size={60} color="black" />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.cardContent}>
+                  <Text style={styles.invoiceNo}>Invoice No : {item.slug}</Text>
                 </View>
               </View>
             ))
           ) : (
-            <View style={styles.noParcel}>
+            <View style={styles.noPurchase}>
               <FontAwesome name="exclamation-circle" size={40} color="red" />
-              <Text style={styles.noParcelText}>No matching parcel found</Text>
+              <Text style={styles.noPurchaseText}>No matching data found</Text>
             </View>
           )}
           {loading && page > 1 && <Loader />}
@@ -148,65 +146,8 @@ const TrackingMyParcel = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  trackingParcelContainer: {
+  purchaseContainer: {
     margin: 10,
-  },
-  cardContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  cardWrap: {
-    flex: 1,
-    width: 100,
-    margin: 1,
-    padding: 2,
-  },
-  card: {
-    borderRadius: 6,
-    elevation: 2,
-    backgroundColor: '#FFF',
-    color: '#000',
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowColor: '#333',
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  cardContent: {
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    padding: 10,
-  },
-  textStyle: {
-    marginBottom: 4,
-    fontSize: 14,
-    textAlign: 'left',
-    color: '#000',
-  },
-  trackingAddress: {
-    color: '#000',
-  },
-  noParcel: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  noParcelText: {
-    marginTop: 10,
-    fontSize: 18,
-    color: 'red',
-    textAlign: 'center',
-  },
-  brandSearchForm: {
-    marginTop: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    marginBottom: 5,
   },
   sectionSearch: {
     ...Platform.select({
@@ -220,6 +161,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         overflow: 'hidden',
         margin: 8,
+        textAlign: 'center',
       },
       android: {
         flexDirection: 'row',
@@ -232,14 +174,12 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         overflow: 'hidden',
         margin: 8,
+        textAlign: 'center',
       },
     }),
   },
   searchStyleInput: {
     flex: 1,
-    shadowColor: '#FFF',
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
     marginLeft: 10,
     color: '#000',
   },
@@ -251,6 +191,51 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
   },
+  card: {
+    borderRadius: 6,
+    elevation: 2,
+    backgroundColor: '#FFF',
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowColor: '#333',
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    marginVertical: 5,
+    marginHorizontal: 5,
+  },
+  cardInvoice: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 4,
+  },
+  fileIcon: {
+    marginTop: 2,
+  },
+  invoiceNo: {
+    marginTop: 10,
+    textAlign: 'center',
+    color: '#000',
+  },
+  cardContent: {
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    marginBottom: 2,
+  },
+  noPurchase: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noPurchaseText: {
+    marginTop: 10,
+    fontSize: 18,
+    color: 'red',
+    textAlign: 'center',
+  },
 });
 
-export default TrackingMyParcel;
+export default PurchaseOrder;

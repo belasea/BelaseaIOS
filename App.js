@@ -44,18 +44,18 @@ const NetworkStatusHandler = ({logScreenView}) => {
   ) : (
     <View style={styles.offlineContainer}>
       <Text style={styles.wifiLogo}>
-        <MaterialIcons name="wifi-off" color={'black'} size={100} />
+        <MaterialIcons name="wifi-off" color={'#FFF'} size={100} />
       </Text>
       <Text style={styles.offlineText}>No Internet connection</Text>
       <Text style={styles.backOnline}>Try these steps to get back online:</Text>
 
       <View style={styles.checkItem}>
-        <MaterialIcons name="check-circle" color={'black'} size={15} />
+        <MaterialIcons name="check-circle" color={'#FFF'} size={15} />
         <Text style={styles.checkItemText}>Check your modem and router</Text>
       </View>
 
       <View style={styles.checkItem}>
-        <MaterialIcons name="check-circle" color={'black'} size={15} />
+        <MaterialIcons name="check-circle" color={'#FFF'} size={15} />
         <Text style={styles.checkItemText}>Reconnect to Wi-Fi</Text>
       </View>
 
@@ -99,13 +99,13 @@ const styles = StyleSheet.create({
   offlineText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#FFF',
     marginBottom: 10,
     alignSelf: 'center',
   },
   backOnline: {
     fontSize: 16,
-    color: '#555',
+    color: '#FFF',
     marginBottom: 20,
     alignSelf: 'center',
   },
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   checkItemText: {
     fontSize: 14,
-    color: '#666',
+    color: '#FFF',
     marginLeft: 5,
   },
   reloadButton: {
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   reloadButtonText: {
-    color: '#fff',
+    color: '#FFF',
     fontSize: 16,
     fontWeight: '600',
   },

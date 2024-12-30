@@ -44,7 +44,11 @@ const TermsConditionScreens = () => {
           <View style={styles.termsCondition}>
             <ScrollView>
               <View style={styles.termsConditionMargin}>
-                <RenderHtml contentWidth={width} source={source} />
+                <RenderHtml
+                  contentWidth={width}
+                  source={source}
+                  defaultTextProps={{style: {color: '#000000', lineHeight: 25}}}
+                />
               </View>
             </ScrollView>
           </View>

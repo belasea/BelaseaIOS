@@ -45,6 +45,7 @@ const usePushNotification = () => {
   const getFCMToken = async () => {
     const fcmToken = await messaging().getToken();
     if (fcmToken) {
+      // console.log('Your Firebase Token is:', fcmToken);
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

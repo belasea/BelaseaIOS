@@ -1,5 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
   SafeAreaView,
   View,
@@ -56,19 +56,25 @@ const CallScreen = ({navigation}) => {
         <Loader />
       ) : (
         <View style={styles.container}>
+          {/* Call Icon */}
           <View style={styles.callIcon}>
-            <Feather name="phone-call" size={100} color="black" />
+            <Feather name="phone-call" size={100} color="#000" />
           </View>
-          <Text
+
+          {/* Call Button */}
+          <TouchableOpacity
             style={styles.call}
             onPress={() => {
               if (phoneNumber) {
-                Linking.openURL(`tel:${phoneNumber}`); // No '+' needed before the number
+                Linking.openURL(`tel:${phoneNumber}`);
               }
             }}>
-            Click to Call
-          </Text>
+            <Text style={{color: '#FFF'}}>Click to Call</Text>
+          </TouchableOpacity>
+
+          {/* Message Section */}
           <View style={styles.callText}>
+            {/* Dynamically adjust the text color based on dark/light mode */}
             <Text style={styles.textMessage}>{message}</Text>
           </View>
         </View>
@@ -82,7 +88,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor: '#f8f8f8',
   },
   container: {
     flex: 1,
@@ -97,31 +102,33 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  callIcon: {
+    padding: 10,
+    borderRadius: 10,
+  },
   call: {
     marginTop: 10,
-    padding: 7,
-    backgroundColor: '#183153',
-    textAlign: 'center',
+    padding: 10,
     borderWidth: 1,
     borderRadius: 8,
-    overflow: 'hidden',
-    fontWeight: 'bold',
-    borderColor: '#183153',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 150,
     color: '#FFF',
+    backgroundColor: '#183153',
+    borderColor: '#183153',
   },
   callText: {
     marginTop: 30,
     marginLeft: 4,
     marginRight: 4,
-  },
-  callIcon: {
     padding: 10,
-    borderRadius: 10,
+    color: '#000',
   },
   textMessage: {
     textAlign: 'center',
     lineHeight: 20,
+    color: '#000',
   },
 });
 

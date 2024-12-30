@@ -22,6 +22,7 @@ import {
 
 const {width: windowWidth, height: windowHeight} = Dimensions.get('window');
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import RelatedProduct from '../components/ProductDetails/RelatedProduct';
 import ProductDetailSliderImage from '../components/ProductDetails/ProductDetailSliderImage';
 import Loader from '../components/Loader/loader';
@@ -297,7 +298,7 @@ const ProductDetailScreen = ({navigation, route}) => {
                     )}
                   </View>
                 </View> */}
-                <View style={{width: '18%'}}>
+                {/* <View style={{width: '18%'}}>
                   <View style={{flex: 1}}>
                     {productData.active && (
                       <View style={{flexDirection: 'row'}}>
@@ -326,12 +327,14 @@ const ProductDetailScreen = ({navigation, route}) => {
                       </View>
                     )}
                   </View>
-                </View>
+                </View> */}
               </View>
               <View style={{flexDirection: 'row'}}>
                 <View style={{width: '70%', marginTop: 10}}>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={{fontWeight: 'bold'}}>Price: ৳</Text>
+                    <Text style={{fontWeight: 'bold', color: '#000'}}>
+                      Price: ৳
+                    </Text>
                     <Text style={styles.productDetailNewPrice}>
                       {productData?.app_price}
                     </Text>
@@ -416,15 +419,18 @@ const ProductDetailScreen = ({navigation, route}) => {
 const styles = StyleSheet.create({
   productDetailContainer: {
     flex: 1,
+    color: '#000000',
   },
   productDetailWrap: {
     flex: 1,
     ...Platform.select({
       ios: {
         marginBottom: '0%',
+        color: '#000000',
       },
       android: {
         marginBottom: 0,
+        color: '#000000',
       },
     }),
   },
@@ -445,10 +451,12 @@ const styles = StyleSheet.create({
   productDescriptionTop: {
     fontWeight: 'bold',
     marginTop: 20,
+    color: '#000',
   },
   productDescription: {
     textAlign: 'justify',
     lineHeight: 25,
+    color: '#000',
   },
   /* Product Detail Content */
   productDetailContent: {
@@ -464,6 +472,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'left',
+    color: '#000',
   },
   productDetailDiscount: {
     fontWeight: 'bold',
@@ -474,11 +483,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 2,
     marginBottom: 5,
+    color: '#000',
   },
   productDetailWeight: {
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 5,
+    color: '#000',
   },
   productDetailOldPrice: {
     color: '#E04F54',
@@ -489,6 +500,7 @@ const styles = StyleSheet.create({
   productDetailNewPrice: {
     fontWeight: 'bold',
     marginLeft: 10,
+    color: '#000',
   },
   addToCartButton: {
     padding: 7,
@@ -499,11 +511,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     fontWeight: 'bold',
     borderColor: '#F9C65D',
+    color: '#000',
   },
   outOfStockButton: {
     padding: 1,
     backgroundColor: '#E04F54',
-    color: '#FFF',
+    color: '#FFFFFF',
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 5,
@@ -604,6 +617,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     textAlign: 'center',
+    color: '#000',
   },
   relatedProductContent: {
     flex: 1,

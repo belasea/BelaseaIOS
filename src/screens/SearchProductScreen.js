@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable radix */
 import React, {useState, useEffect} from 'react';
 import {
@@ -6,7 +7,9 @@ import {
   StyleSheet,
   Platform,
   ScrollView,
+  TextInput,
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import ProductList from '../components/ProductList/ProductList';
 import {productSearchApi} from '../api/Products/products';
@@ -35,6 +38,21 @@ const SearchProductScreen = ({navigation, route}) => {
     {label: 'Discount DESC', value: '6'},
   ]);
   const [productList, setProductList] = useState([]);
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = data => {
+    setSearchQuery(data);
+
+    setTimeout(() => {
+      navigation.navigate('SearchProductStack', {
+        screen: 'SearchProduct',
+        params: {
+          search_query: data,
+        },
+      });
+    }, 1000);
+  };
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -112,6 +130,19 @@ const SearchProductScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.productListContainer}>
       <View style={styles.productListWrap}>
+        <View style={styles.sectionSearch}>
+          <TextInput
+            name="search_product"
+            onChangeText={text => handleSearchChange(text, navigation)}
+            value={searchQuery}
+            placeholder="Search Product or Brand Name"
+            textAlign="center"
+            style={styles.searchStyleInput}
+            selectionColor="#000"
+            placeholderTextColor="#000"
+          />
+          <FontAwesome name="search" size={20} style={styles.searchIcon} />
+        </View>
         <ScrollView
           onScroll={({nativeEvent}) => {
             if (isCloseToBottom(nativeEvent)) {
@@ -134,6 +165,52 @@ const SearchProductScreen = ({navigation, route}) => {
 };
 
 const styles = StyleSheet.create({
+  sectionSearch: {
+    ...Platform.select({
+      ios: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#183153',
+        height: 40,
+        borderRadius: 15,
+        margin: 5,
+        textAlign: 'center',
+        overflow: 'hidden',
+      },
+      android: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#183153',
+        height: 40,
+        borderRadius: 15,
+        marginTop: 10,
+        marginRight: 5,
+        marginLeft: 5,
+        textAlign: 'center',
+      },
+    }),
+  },
+  searchStyleInput: {
+    flex: 1,
+    shadowColor: '#FFF',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    marginLeft: 10,
+    color: '#000',
+  },
+  searchIcon: {
+    backgroundColor: '#183153',
+    color: '#FFF',
+    padding: 10,
+    height: 40,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+  },
   productListContainer: {
     flex: 1,
   },

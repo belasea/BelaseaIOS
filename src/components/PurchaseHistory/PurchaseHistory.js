@@ -16,15 +16,13 @@ const PurchaseHistory = ({purchaseHistory}) => {
               onPress={() => {
                 Linking.openURL(`${BASE_URL}/invoices/list/${item.slug}`);
               }}>
-              <Text style={{marginTop: 2}}>
+              <Text style={styles.fileIcon}>
                 <FontAwesome name="file-pdf-o" size={60} color="black" />
               </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.cardContent}>
-            <Text style={{marginTop: 10, textAlign: 'center'}}>
-              Invoice No : {item.slug}
-            </Text>
+            <Text style={styles.invoiceNo}>Invoice No : {item.slug}</Text>
           </View>
         </View>
       ))}
@@ -57,6 +55,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 4,
+  },
+  fileIcon: {
+    marginTop: 2,
+  },
+  invoiceNo: {
+    marginTop: 10,
+    textAlign: 'center',
   },
 
   cardContent: {

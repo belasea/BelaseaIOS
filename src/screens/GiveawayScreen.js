@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   safeArea: {
+    color: '#000',
     ...Platform.select({
       ios: {
         marginBottom: '0%',
@@ -130,6 +131,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     borderColor: '#A88342',
     marginRight: 5,
+  },
+  noDataTitle: {
+    color: '#000',
   },
 });
 export default GiveawayScreen;

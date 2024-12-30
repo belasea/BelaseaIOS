@@ -165,7 +165,7 @@ const Checkout = ({navigation, cartItem}) => {
                         </Text>
                       </View>
                       <View style={{flex: 4}}>
-                        <Text>Inside Dhaka</Text>
+                        <Text style={{color: '#000'}}>Inside Dhaka</Text>
                       </View>
                     </View>
                   </View>
@@ -253,6 +253,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     marginTop: 5,
+    color: '#000',
   },
   checkoutProcessTitle: {
     fontWeight: 'bold',
@@ -394,6 +395,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     marginBottom: 10,
+    color: '#000',
   },
   deliveryMethodContent: {
     flexDirection: 'row',

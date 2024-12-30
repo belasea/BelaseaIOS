@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
   relatedProductCardTitle: {
     fontSize: 12,
     textAlign: 'left',
+    color: '#000',
   },
 });
 

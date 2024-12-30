@@ -40,7 +40,7 @@ const HomeScreen = ({navigation}) => {
           text: 'Update',
           onPress: () =>
             Linking.openURL(
-              'https://play.google.com/store/apps/details?id=com.mohinur.shop',
+              'https://play.google.com/store/apps/details?id=com.belasea',
             ),
         },
       ],
@@ -53,7 +53,7 @@ const HomeScreen = ({navigation}) => {
         const latestVersion = await checkVersion({
           version: DeviceInfo.getVersion(),
           androidStoreURL:
-            'https://play.google.com/store/apps/details?id=com.mohinur.shop',
+            'https://play.google.com/store/apps/details?id=com.belasea',
           country: 'jp', // Adjust the country code as needed
         });
 
@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginBottom: 5,
+    color: '#000',
   },
   byMakeup: {
     overflow: 'hidden',
@@ -162,6 +163,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginBottom: 5,
+    color: '#000',
   },
   bySkin: {
     overflow: 'hidden',
@@ -172,6 +174,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginBottom: 5,
+    color: '#000',
   },
   byConcern: {
     overflow: 'hidden',
@@ -183,6 +186,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginBottom: 5,
+    color: '#000',
   },
 });
 

@@ -34,7 +34,7 @@ const AboutUsScreen = () => {
   }, []);
 
   const source = {
-    html: `<p style="line-height: 40px; text-align: justify">${about?.description}</p>`,
+    html: `<p>${about?.description}</p>`,
   };
 
   if (about) {
@@ -46,7 +46,11 @@ const AboutUsScreen = () => {
           <View style={styles.aboutUs}>
             <ScrollView>
               <View style={styles.aboutUsMargin}>
-                <RenderHtml contentWidth={width} source={source} />
+                <RenderHtml
+                  contentWidth={width}
+                  source={source}
+                  defaultTextProps={{style: {color: '#000000', lineHeight: 25}}}
+                />
               </View>
             </ScrollView>
           </View>

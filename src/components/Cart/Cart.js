@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 15,
     height: 30,
+    color: '#000',
   },
   cartQuantity: {
     flex: 1,
@@ -144,6 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 10,
     marginLeft: 8,
+    color: '#000',
   },
   addRemoveQuantity: {
     width: '50%',

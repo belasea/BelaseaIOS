@@ -20,7 +20,7 @@ const SecurityPrivacyScreens = () => {
   const {width} = useWindowDimensions();
 
   const source = {
-    html: `<p style="line-height: 30px; text-align: justify">${securityPrivacy?.description}</p>`,
+    html: `${securityPrivacy?.description}`,
   };
 
   useEffect(() => {
@@ -45,7 +45,11 @@ const SecurityPrivacyScreens = () => {
           <View style={styles.securityPrivacy}>
             <ScrollView>
               <View style={styles.securityPrivacyMargin}>
-                <RenderHtml contentWidth={width} source={source} />
+                <RenderHtml
+                  contentWidth={width}
+                  source={source}
+                  defaultTextProps={{style: {color: '#000000', lineHeight: 25}}}
+                />
               </View>
             </ScrollView>
           </View>

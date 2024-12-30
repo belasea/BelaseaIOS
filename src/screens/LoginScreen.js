@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState, useContext} from 'react';
 import {
   ScrollView,

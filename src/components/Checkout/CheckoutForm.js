@@ -186,7 +186,8 @@ const CheckoutForm = ({
             <TextInput
               name="first_name"
               placeholder="First Name * "
-              selectionColor="#183153"
+              selectionColor="#000"
+              placeholderTextColor="#000"
               style={styles.checkoutAddressForm}
               value={formData.first_name}
               onChangeText={text => handleInputChange('first_name', text)}
@@ -198,7 +199,8 @@ const CheckoutForm = ({
             <TextInput
               name="last_name"
               placeholder="Last Name * "
-              selectionColor="#183153"
+              selectionColor="#000"
+              placeholderTextColor="#000"
               style={styles.checkoutAddressForm}
               value={formData.last_name}
               onChangeText={text => handleInputChange('last_name', text)}
@@ -211,7 +213,8 @@ const CheckoutForm = ({
           name="email"
           placeholder="Email Address"
           keyboardType="email-address"
-          selectionColor="#183153"
+          selectionColor="#000"
+          placeholderTextColor="#000"
           style={styles.checkoutAddressForm}
           value={formData.email}
           onChangeText={text => handleInputChange('email', text)}
@@ -223,7 +226,8 @@ const CheckoutForm = ({
           placeholder="Phone Number * "
           style={styles.checkoutAddressForm}
           keyboardType="numeric"
-          selectionColor="#183153"
+          selectionColor="#000"
+          placeholderTextColor="#000"
           // editable={false}
           value={formData.contact_number}
           onChangeText={text => handleInputChange('contact_number', text)}
@@ -233,7 +237,8 @@ const CheckoutForm = ({
         <TextInput
           name="address"
           placeholder="Address (Ex. street name, street number, house/flat number) * "
-          selectionColor="#183153"
+          selectionColor="#000"
+          placeholderTextColor="#000"
           style={styles.checkoutAddressForm}
           value={formData.address}
           onChangeText={text => handleInputChange('address', text)}
@@ -244,7 +249,8 @@ const CheckoutForm = ({
           name="location"
           placeholder="Your area ( Ex. Mirpur, Dhanmondi ) *"
           style={styles.checkoutAddressForm}
-          selectionColor="#183153"
+          selectionColor="#000"
+          placeholderTextColor="#000"
           value={formData.location}
           onChangeText={text => handleInputChange('location', text)}
         />
@@ -254,7 +260,8 @@ const CheckoutForm = ({
           name="city"
           placeholder="City ( Ex. Dhaka, Khulna, Chittagong ) *"
           style={styles.checkoutAddressForm}
-          selectionColor="#183153"
+          selectionColor="#000"
+          placeholderTextColor="#000"
           value={formData.city}
           onChangeText={text => handleInputChange('city', text)}
         />
@@ -263,7 +270,8 @@ const CheckoutForm = ({
         name="notes"
         placeholder="Notes for order, delivery (optional). e.g. specific delivery date or packaging *"
         style={styles.checkoutAddressNoteForm}
-        selectionColor="#183153"
+        selectionColor="#000"
+        placeholderTextColor="#000"
         value={formData.notes}
         onChangeText={text => handleInputChange('notes', text)}
       />
@@ -331,6 +339,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#D9D9D9',
     marginBottom: 10,
+    color: '#000',
   },
   placeAnOrder: {
     padding: 7,
@@ -393,6 +402,7 @@ const styles = StyleSheet.create({
   byClickingOrder: {
     fontSize: 13,
     marginRight: 2,
+    color: '#000',
   },
   termsConditionColor: {
     color: 'blue',

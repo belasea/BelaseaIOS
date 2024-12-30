@@ -48,7 +48,11 @@ const ReturnPolicyScreen = () => {
             </Text>
             <ScrollView>
               <View style={styles.returnPolicyMargin}>
-                <RenderHtml contentWidth={width} source={source} />
+                <RenderHtml
+                  contentWidth={width}
+                  source={source}
+                  defaultTextProps={{style: {color: '#000000', lineHeight: 25}}}
+                />
               </View>
             </ScrollView>
           </View>
@@ -88,6 +92,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     overflow: 'hidden',
+    color: '#000',
   },
   returnPolicySubTitle: {
     fontWeight: 'bold',

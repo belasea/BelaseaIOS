@@ -13,7 +13,11 @@ const Giveaway = ({offer = {}}) => {
       <View style={styles.liveOfferContent}>
         <Text style={styles.liveOfferTitle}>{offer?.title || 'No Title'}</Text>
         <View>
-          <RenderHtml contentWidth={width} source={source} />
+          <RenderHtml
+            contentWidth={width}
+            source={source}
+            baseStyle={{color: 'black'}}
+          />
         </View>
       </View>
       <View style={styles.offerImage}>
@@ -52,11 +56,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     overflow: 'hidden',
+    color: '#000',
   },
   liveOfferTitle: {
     fontWeight: 'bold',
     marginBottom: 10,
     marginTop: 10,
+    color: '#000',
   },
   offerImage: {
     borderTopLeftRadius: 7,

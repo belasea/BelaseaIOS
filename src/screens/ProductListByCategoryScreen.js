@@ -278,15 +278,18 @@ const ProductListByCategoryScreen = ({navigation, route}) => {
 const styles = StyleSheet.create({
   productListContainer: {
     flex: 1,
+    color: '#000000',
   },
   productListWrap: {
     flex: 1,
     ...Platform.select({
       ios: {
         marginBottom: '0%',
+        color: '#000000',
       },
       android: {
         marginBottom: 0,
+        color: '#000000',
       },
     }),
   },
@@ -303,6 +306,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
     fontWeight: 'bold',
+    color: '#000',
   },
 
   noProductWrap: {
@@ -314,6 +318,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     margin: 2,
+    color: '#000',
   },
   productNotDataFound: {
     marginTop: 10,

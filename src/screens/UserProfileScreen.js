@@ -294,6 +294,7 @@ const styles = StyleSheet.create({
   userProfileTitle: {
     textAlign: 'center',
     fontWeight: 'bold',
+    color: '#000',
   },
   userProfileContent: {
     flexDirection: 'row',
@@ -319,6 +320,7 @@ const styles = StyleSheet.create({
   },
   profileInfoTitle: {
     fontSize: 16,
+    color: '#000',
   },
   profileRightArrow: {
     flex: 1,

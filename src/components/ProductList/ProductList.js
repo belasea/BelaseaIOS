@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   productCardTitle: {
     fontSize: 12,
     height: 45,
+    color: '#000',
   },
   productPriceContent: {
     flexDirection: 'row',
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
   },
   productNewPrice: {
     fontSize: 11,
+    color: '#000',
   },
   productOldPrice: {
     fontSize: 11,

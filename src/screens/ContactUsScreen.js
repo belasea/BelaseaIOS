@@ -95,21 +95,24 @@ const ContactUsScreen = () => {
             placeholder="Subject *"
             style={styles.input}
             value={subject}
-            selectionColor="#183153"
+            selectionColor="#000"
+            placeholderTextColor="#000"
             onChangeText={setSubject}
           />
           <TextInput
             placeholder="Full Name *"
             style={styles.input}
             value={name}
-            selectionColor="#183153"
+            selectionColor="#000"
+            placeholderTextColor="#000"
             onChangeText={setName}
           />
           <TextInput
             placeholder="E-mail *"
             style={styles.input}
             value={email}
-            selectionColor="#183153"
+            selectionColor="#000"
+            placeholderTextColor="#000"
             onChangeText={setEmail}
           />
           <TextInput
@@ -117,7 +120,8 @@ const ContactUsScreen = () => {
             style={styles.input}
             value={phone}
             keyboardType="numeric"
-            selectionColor="#183153"
+            selectionColor="#000"
+            placeholderTextColor="#000"
             onChangeText={setPhone}
           />
           <TextInput
@@ -125,7 +129,8 @@ const ContactUsScreen = () => {
             multiline
             style={styles.textArea}
             value={message}
-            selectionColor="#183153"
+            selectionColor="#000"
+            placeholderTextColor="#000"
             onChangeText={setMessage}
           />
           <View style={styles.styleLoginBtn}>
@@ -140,20 +145,22 @@ const ContactUsScreen = () => {
         <View style={styles.mainAddressWrap}>
           {/* Contact Address */}
           {isLoading ? (
-            <Text>Loading contact information...</Text>
+            <Text style={styles.loadingInformation}>
+              Loading contact information...
+            </Text>
           ) : contactInfo ? (
             <View style={styles.contactUsAddress}>
               <Text style={styles.contactUsAddressTitle}>Address</Text>
               <View style={styles.addressDetail}>
-                <Text>{contactInfo.address1}</Text>
-                <Text>{contactInfo.address2}</Text>
-                <Text>{contactInfo.address3}</Text>
+                <Text style={styles.contactInfo}>{contactInfo.address1}</Text>
+                <Text style={styles.contactInfo}>{contactInfo.address2}</Text>
+                <Text style={styles.contactInfo}>{contactInfo.address3}</Text>
               </View>
               <Text style={styles.contactUsAddressPhone}>Phone</Text>
               <View style={styles.contactUsAddressPhoneList}>
                 <TouchableOpacity
                   onPress={() => Linking.openURL(`tel:${contactInfo.phone}`)}>
-                  <Text>{contactInfo.phone}</Text>
+                  <Text style={styles.contactInfo}>{contactInfo.phone}</Text>
                 </TouchableOpacity>
               </View>
               <Text style={styles.contactUsAddressEmail}>E-mail</Text>
@@ -162,7 +169,7 @@ const ContactUsScreen = () => {
                   onPress={() =>
                     Linking.openURL(`mailto:${contactInfo.email}`)
                   }>
-                  <Text>{contactInfo.email}</Text>
+                  <Text style={styles.contactInfo}>{contactInfo.email}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -207,7 +214,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     overflow: 'hidden',
-    borderColor: '#D9D9D9',
+    borderColor: '#000',
+    color: '#000',
   },
   textArea: {
     height: 60,
@@ -215,7 +223,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
-    borderColor: '#D9D9D9',
+    borderColor: '#000',
+    color: '#000',
   },
   styleLoginBtn: {
     borderRadius: 10,
@@ -239,6 +248,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#000',
   },
+  loadingInformation: {
+    color: '#000',
+  },
 
   mainAddressWrap: {
     marginTop: 5,
@@ -250,14 +262,20 @@ const styles = StyleSheet.create({
   contactUsAddressTitle: {
     fontWeight: 'bold',
     fontSize: 24,
+    color: '#000',
   },
   addressDetail: {
     margin: 10,
+    color: '#000',
+  },
+  contactInfo: {
+    color: '#000',
   },
   contactUsAddressPhone: {
     marginTop: 10,
     fontWeight: 'bold',
     fontSize: 24,
+    color: '#000',
   },
   contactUsAddressPhoneList: {
     margin: 10,
@@ -266,6 +284,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: 'bold',
     fontSize: 24,
+    color: '#000',
   },
   map: {
     width: '100%',

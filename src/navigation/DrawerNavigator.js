@@ -724,6 +724,7 @@ const styles = StyleSheet.create({
   drawerLabel: {
     fontSize: 14,
     width: '100%',
+    color: '#000',
   },
   drawerLabel2: {
     fontSize: 14,

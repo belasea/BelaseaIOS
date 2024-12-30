@@ -64,7 +64,8 @@ const BrandScreens = ({navigation}) => {
                 onChangeText={setSearchValue}
                 style={styles.searchStyleInput}
                 value={searchValue}
-                selectionColor="#183153"
+                selectionColor="#000"
+                placeholderTextColor="#000"
               />
               <FontAwesome name="search" size={20} style={styles.searchIcon} />
             </View>
@@ -146,6 +147,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 2,
     marginLeft: 10,
+    color: '#000',
   },
   searchIcon: {
     backgroundColor: '#1b3c60',

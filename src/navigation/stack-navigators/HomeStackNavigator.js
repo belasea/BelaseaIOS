@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {
@@ -182,17 +183,17 @@ const styles = StyleSheet.create({
   },
   // User Icon & Search
   headerRight: {
-    marginRight: 15,
+    marginRight: 10,
   },
   headerContent: {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
   headerSearchIcon: {
-    marginLeft: 20,
+    marginLeft: 10,
   },
   headerUserIcon: {
-    marginLeft: 20,
+    marginLeft: 10,
   },
   touchableButton: {
     backgroundColor: '#183153',

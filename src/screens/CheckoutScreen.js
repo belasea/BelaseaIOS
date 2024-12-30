@@ -4,24 +4,31 @@ import Checkout from '../components/Checkout/Checkout';
 import Loader from '../components/Loader/loader';
 import EmptyCart from '../components/Cart/EmptyCart';
 import {BASE_URL} from '../api/api';
+import {useIsFocused} from '@react-navigation/native';
 
 const CheckoutScreen = ({navigation}) => {
   const [cartItem, setCartItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const isFocused = useIsFocused(); // Detects if the screen is focused
 
   useEffect(() => {
-    fetchCartData();
-  }, []);
+    if (isFocused) {
+      // Fetch data each time the screen is focused
+      fetchCartData();
+    }
+  }, [isFocused]);
 
-  // Cart Fetch Data ================
+  // Cart Fetch Data
   const fetchCartData = async () => {
+    setLoading(true); // Set loading state to true before fetching data
     try {
       const response = await fetch(`${BASE_URL}/carts/api/cart-list`);
       const responseData = await response.json();
       setCartItem(responseData.cart);
-      setLoading(false);
     } catch (error) {
       console.log('Error fetching cart data:', error);
+    } finally {
+      setLoading(false); // Set loading state to false after fetching data
     }
   };
 
@@ -30,19 +37,17 @@ const CheckoutScreen = ({navigation}) => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <View style={styles.container}>
-            {cartItem.exist ? (
-              <Checkout
-                cartItem={cartItem}
-                loading={loading}
-                navigation={navigation}
-              />
-            ) : (
-              <EmptyCart navigation={navigation} />
-            )}
-          </View>
-        </>
+        <View style={styles.container}>
+          {cartItem?.exist ? (
+            <Checkout
+              cartItem={cartItem}
+              loading={loading}
+              navigation={navigation}
+            />
+          ) : (
+            <EmptyCart navigation={navigation} />
+          )}
+        </View>
       )}
     </SafeAreaView>
   );
@@ -65,4 +70,5 @@ const styles = StyleSheet.create({
     }),
   },
 });
+
 export default CheckoutScreen;

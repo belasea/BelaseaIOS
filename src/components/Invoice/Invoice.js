@@ -16,6 +16,11 @@ import {BASE_URL} from '../../api/api';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Invoice = ({invoiceData, navigation}) => {
+  const totalCostWithTax = parseFloat(
+    invoiceData?.invoice?.total_cost_with_tax || 0,
+  );
+  const totalCost = parseFloat(invoiceData?.invoice?.total_cost || 0);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -29,51 +34,80 @@ const Invoice = ({invoiceData, navigation}) => {
               Your order has been placed
             </Text>
             <Text
-              style={{textAlign: 'center', fontWeight: 'bold', marginTop: 2}}>
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                marginTop: 2,
+                color: '#000',
+              }}>
               We will contact you soon
             </Text>
             <View style={styles.billingCard}>
               <Text style={styles.orderSummary}>Summary of your Order</Text>
               <View style={styles.orderSummaryContent}>
                 <View style={styles.orderSummaryLeftContent}>
-                  <Text style={{marginBottom: 5, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      marginBottom: 5,
+                      fontWeight: 'bold',
+                      color: '#000',
+                    }}>
                     Invoice no{' '}
                   </Text>
                 </View>
                 <View style={styles.orderSummaryRightContent}>
-                  <Text>: {invoiceData?.invoice?.slug.toUpperCase()}</Text>
+                  <Text style={{color: '#000'}}>
+                    : {invoiceData?.invoice?.slug.toUpperCase()}
+                  </Text>
                 </View>
               </View>
               <View style={styles.orderSummaryContent}>
                 <View style={styles.orderSummaryLeftContent}>
-                  <Text style={{marginBottom: 5, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      marginBottom: 5,
+                      fontWeight: 'bold',
+                      color: '#000',
+                    }}>
                     Phone no{' '}
                   </Text>
                 </View>
                 <View style={styles.orderSummaryRightContent}>
-                  <Text>
+                  <Text style={{color: '#000'}}>
                     : {invoiceData.invoice?.addresses?.contact_number}
                   </Text>
                 </View>
               </View>
               <View style={styles.orderSummaryContent}>
                 <View style={styles.orderSummaryLeftContent}>
-                  <Text style={{marginBottom: 5, fontWeight: 'bold'}}>
-                    Amount to be paid{' '}
+                  <Text
+                    style={{
+                      marginBottom: 5,
+                      fontWeight: 'bold',
+                      color: '#000',
+                    }}>
+                    Amount to be paid :{' '}
                   </Text>
                 </View>
                 <View style={styles.orderSummaryRightContent}>
-                  <Text>: {invoiceData?.invoice?.total_cost_with_tax} ৳</Text>
+                  <Text style={{color: '#000'}}>
+                    {totalCostWithTax || totalCost} ৳
+                  </Text>
                 </View>
               </View>
               <View style={styles.orderSummaryContent}>
                 <View style={styles.orderSummaryLeftContent}>
-                  <Text style={{marginBottom: 5, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      marginBottom: 5,
+                      fontWeight: 'bold',
+                      color: '#000',
+                    }}>
                     Address
                   </Text>
                 </View>
                 <View style={styles.orderSummaryRightContent}>
-                  <Text>
+                  <Text style={{color: '#000'}}>
                     : {invoiceData.invoice.addresses.location},{' '}
                     {invoiceData.invoice.addresses.city}
                   </Text>
@@ -81,7 +115,12 @@ const Invoice = ({invoiceData, navigation}) => {
               </View>
               <View style={styles.orderSummaryContent}>
                 <View style={styles.orderSummaryLeftContent}>
-                  <Text style={{marginBottom: 5, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      marginBottom: 5,
+                      fontWeight: 'bold',
+                      color: '#000',
+                    }}>
                     Track your order
                   </Text>
                 </View>
@@ -96,29 +135,9 @@ const Invoice = ({invoiceData, navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              {/* {invoiceData.invoice.delivery_charge > 130 ? (
-                <Text style={{marginTop: 4, textAlign: 'justify'}}>
-                  <Text style={{fontWeight: 'bold', marginRight: 4}}>
-                    Note :{' '}
-                  </Text>
-                  Dear Sir/Ma'am, please pay BDT{' '}
-                  {invoiceData.invoice.delivery_charge} by Bkash and rest cash
-                  on delivery. Please check your products in front of the
-                  delivery man. Please call @ 01305-606540 (Bkash personal
-                  number) for help.
-                </Text>
-              ) : (
-                <Text style={{marginTop: 4, textAlign: 'justify'}}>
-                  <Text style={{fontWeight: 'bold', marginRight: 4}}>
-                    Note :{' '}
-                  </Text>
-                  Dear Sir/Ma'am, payment are cash on delivery. Please check
-                  your products in front of the delivery man. For any help,
-                  please call as @ 01305-606540.
-                </Text>
-              )} */}
               <Text style={{marginTop: 4, textAlign: 'justify'}}>
-                <Text style={{fontWeight: 'bold', marginRight: 4}}>
+                <Text
+                  style={{fontWeight: 'bold', marginRight: 4, color: '#000'}}>
                   Note :{' '}
                 </Text>
                 {invoiceData?.delivery_message}
@@ -189,17 +208,20 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     fontWeight: 'bold',
+    color: '#000',
   },
   orderCompleted: {
     fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold',
     marginTop: 10,
+    color: '#000',
   },
   orderSummary: {
     textAlign: 'center',
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#000',
   },
   orderSummaryContent: {
     flexDirection: 'row',

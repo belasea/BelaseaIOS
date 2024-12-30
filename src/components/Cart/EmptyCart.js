@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     }),
   },
   emptyTitle: {
-    fontWeight: 'bold',
+    color: '#000',
   },
   noDataFound: {
     marginTop: 10,
